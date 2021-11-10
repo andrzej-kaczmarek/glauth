@@ -76,6 +76,7 @@ type User struct {
 	LoginShell    string
 	GivenName     string
 	SN            string
+	CN            string
 	Homedir       string
 }
 type Group struct {

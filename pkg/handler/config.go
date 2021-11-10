@@ -127,6 +127,10 @@ func (h configHandler) FindPosixAccounts() (entrylist []*ldap.Entry, err error) 
 			attrs = append(attrs, &ldap.EntryAttribute{Name: "sn", Values: []string{u.SN}})
 		}
 
+		if len(u.CN) > 0 {
+			attrs = append(attrs, &ldap.EntryAttribute{Name: "name", Values: []string{u.CN}})
+		}
+
 		attrs = append(attrs, &ldap.EntryAttribute{Name: "ou", Values: []string{h.getGroupName(u.PrimaryGroup)}})
 		attrs = append(attrs, &ldap.EntryAttribute{Name: "uidNumber", Values: []string{fmt.Sprintf("%d", u.UIDNumber)}})
 
